@@ -1,0 +1,154 @@
+<!DOCTYPE HTML>
+<HTML>
+
+    <HEAD>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <!-- A biblioteca bundle já contem os arquivos JS do Bootstrap, Popper, e jQuery.
+<script src="js/bootstrap.bundle.js"></script>-->
+        <title>FTT EC LP2 N1!!</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+              rel="stylesheet">
+        <LINK REL="stylesheet" HREF="css/bootstrap.css" />
+        <STYLE>
+            .center-txt {
+                text-align: center;
+                color: black;
+                width: 90px;
+                padding: 4px;
+                margin:0;
+                border:0;
+            }
+            .button-selected {
+                background-color: #343a40;
+                color: white;
+                border-radius: 15px;
+            }       
+            .width-button-bar {
+                text-align: center;
+                padding-top: 5px;
+                padding-bottom: 5px;
+                margin-right: 0;
+                margin-left: 0;
+
+            }
+            .bottom-button-bar {
+                margin:0;
+                padding:0;
+                border:0;
+                width: 100%;
+            }
+            .icon-font {
+                font-size: 40px;   
+            }
+            main {
+                padding-top: 56px;
+                padding-bottom: 50px;
+            }
+
+            #divLoading {
+                background: url('img/loadMarvel.gif') no-repeat center center #6bb3f347;
+                position: absolute;
+                top: 0;
+                left: 0;
+                min-height: 100%;
+                min-width: 100%;
+                z-index: 9999999;
+            }
+        </STYLE>
+        <SCRIPT>
+
+
+
+        </SCRIPT>
+    </HEAD>
+
+    <BODY lang="pt-br" style="background-color: #c57575">
+        <div id="divLoading"></div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <a class="navbar-brand" href="#">&#x1F981; FTT EC LP2 N1!!!</a>
+
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <div class="navbar-nav float-right text-right pr-3">
+                    <a class="nav-item nav-link" href="index.html">Splash</a>
+                    <a class="nav-item nav-link" href="http://www.fundacaosalvadorarena.org.br/" target="newpage">CEFSA</a>
+                    <a class="nav-item nav-link" href="about.html">Sobre</a>
+                </div>
+            </div>
+        </nav>
+
+        <main class="container" id="aluno" style=" width: 100%; height: 100%;">
+            <div style="text-align: center; font-size: 40px">SEARCH FOR MARVEL CHARACTERS</div>
+            <div class="row"  style="margin-top: 5%; padding-bottom: 60px">
+                <div style="align-items: center">                    
+                    <input class="form-control" type="text" id="txtSearch">
+                </div>
+                <div style="margin-left: 1%">                 
+                    <button class="btn btn-primary" style="border-radius: 35px;" id="btnSearch"><i class="material-icons">search</i></button>
+                </div>
+                <div >
+                    <br>
+                    <div style="allign: center;">
+                        <p style="text-align: center"><b><label id="lblNome" style="font-size: 60px"></label></b></p>
+                        <p style="text-align: center"><img id="imgPerson" width="350" height="350" style= "border-radius:10px; border-bottom: 100px;"></p>
+                        <p id="descPerson" style="text-align: center; font-size: 25px"></p>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+
+        <nav class="navbar fixed-bottom navbar-light bg-light width-button-bar">
+            <div class="row w-100 bottom-button-bar">
+                <div class="col-sm center-txt"><b onclick='window.location="tab01news.html"'>News<br><span class="icon-font">&#x1f4f0;</span></b>
+                </div>
+                <div class="col-sm center-txt"><b onclick='window.location="tab02map.html"'>Map<br><span class="icon-font">&#x1f4cc;</span></b>
+                </div>
+                <div class="col-sm center-txt"><b onclick='window.location="tab03todo.html"'>Todo<br><span class="icon-font">&#x1F4DD;</span></b>
+                </div>
+                <div class="col-sm center-txt button-selected"><b onclick='window.location="tab04project.html"'>BÔNUS!!!<br><span class="icon-font">&#x1F981;</span></b>
+                </div>
+            </div>
+        </nav>
+    </BODY>
+    <!-- carga de scripts do Bootstrap, JQuery, Popper -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script src="js/components/core.js"></script>
+    <script src="js/components/md5.js"></script>
+    <script>
+        showLoader(false);
+        $("#btnSearch").click(function(){
+            var hero = $("#txtSearch").val();
+            GetHero(hero);
+        });
+        async function GetHero(hero){
+            showLoader(true);
+            var publicKey = "a3743c8842d1c7e0ba4598f961058bad";
+            var privateKey = "2687c924ed334f22b035e73d17282c5d6dc00cdd";
+            var timeInMs = Math.floor(Date.now() /1000);
+            var hash = CryptoJS.MD5(timeInMs + privateKey + publicKey).toString();
+            var url = "https://gateway.marvel.com/v1/public/characters?name="+ hero+"&ts="+timeInMs+"&apikey="+publicKey+"&hash=" + hash;
+            var resultado = await fetch(url).then(function(result){
+                return result.json();
+            }).finally(function(){
+                showLoader(false);
+            }); 
+            var img = resultado.data.results[0].thumbnail.path + "."+ resultado.data.results[0].thumbnail.extension;
+            $("#lblNome").html(resultado.data.results[0].name);
+            $("#imgPerson").attr("src", img);
+            $("#descPerson").html(resultado.data.results[0].description);                       
+        }
+        function showLoader(loading) {
+            if(!loading)
+                $('#divLoading').css("display", "none");
+            else
+                $('#divLoading').css("display", "block");      
+        }
+    </script>
+</HTML>
